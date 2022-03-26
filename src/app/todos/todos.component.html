@@ -1,0 +1,29 @@
+<div class="container mt-5">
+  <div>
+    <div class="row">
+      <input type="text" [(ngModel)]="newTask" >
+      <button (click)="aggiungi()" >Aggiungi Task</button>
+    </div>
+    <ng-container *ngIf="task; else elseTemplate">
+
+    <div class="task mt-5" *ngIf="task.length > 0; else elseNoTask">
+      <div *ngFor="let t of task; let i = index"  >
+        <div>
+        {{t.title}}
+        <i class="bi bi-trash"(click)="completeTask(t,i)" ></i>
+        </div>
+
+      </div>
+
+    </div>
+    </ng-container>
+    <ng-template #elseTemplate>
+    <p>Recupero Tasks...</p>
+    </ng-template>
+  </div>
+
+  <ng-template #elseNoTask>
+    <p>Oops, non ci sono Task</p>
+  </ng-template>
+
+</div>
